@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Spotify</title>
+		<!-- normalize css -->
+		<link rel="stylesheet" href="css/normalize/normalize.css" />
+		<!-- styles -->
+		<link rel="stylesheet" href="css/styles.css" />
+		<!-- font awesome -->
+		<script
+			src="https://kit.fontawesome.com/719332159c.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<footer class="playingBbar-ctn">
+			<div class="playingBar__left">
+				<div class="info">
+					<div class="info__pic"></div>
+					<input id="add-files" type="file" multiple />
+					<div class="info__song">
+						<p class="info__name">Long Season looool</p>
+						<span class="info__artist">Tan Bionica</span>
+					</div>
+					<div class="info__liked">
+						<!-- <i class="control__btn- control__btn fas fa-heart"></i> -->
+						<i class="far fa-heart control__btn-liked control__btn"></i>
+					</div>
+				</div>
+			</div>
+			<div class="playingBar__center">
+				<div class="controls__buttons">
+					<div id="prev-btn" class="control-btn-wrapper">
+						<i class="fas fa-step-backward control__btn-prev control__btn"></i>
+					</div>
+					<div id="next-btn" class="control-btn-wrapper">
+						<i class="fas fa-step-forward control__btn-next control__btn"></i>
+					</div>
+					<div id="play-btn" class="control-btn-wrapper">
+						<i class="fas fa-play control__btn-start control__btn"></i>
+					</div>
+					<!-- esta etiqueta no se va a mostrar -->
+					<audio id="audio-added"></audio>
+					<div class="control-btn-wrapper">
+						<i class="fas fa-redo control-btn-repeat control__btn"></i>
+					</div>
+				</div>
+				<div class="playback">
+					<span class="playback__text playback__progress-text">0:00</span>
+					<div class="progress-bar">
+						<span class="progress"></span>
+					</div>
+					<span class="playback__text playback__duration">0:00</span>
+				</div>
+			</div>
+			<div class="playingBar__right">
+				<div class="extra-controls">
+					<div class="control__btn-device control__btn">💻</div>
+					<div class="volume">
+						<!-- <i class="control__btn- control__btn fas fa-volume-down"></i> -->
+						<!-- <i class="control__btn- control__btn fas fa-volume-off"></i> -->
+						<div class="volume__emoji">
+							<i class="fas fa-volume-up control__btn control__btn-volume"></i>
+						</div>
+						<input
+							id="volume-bar"
+							class="volume-bar"
+							type="range"
+							min="0"
+							max="1"
+							step="0.10"
+						/>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<h3>traklist</h3>
+		<div class="list"></div>
+		<p id="playing-now"></p>
+		<button id="btn-auto-track" class="btn-auto-track">repetir???</button>
+		<script src="js/script.js" type="module"></script>
+	</body>
+</html>

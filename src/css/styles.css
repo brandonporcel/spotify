@@ -1,0 +1,150 @@
+@import 'config/_general.css';
+@import 'config/_colors.css';
+body {
+	background-color: #669;
+	font-family: Helvetica, sans-serif;
+}
+.playingBbar-ctn {
+	background-color: var(--footer);
+	color: var(--white);
+	display: flex;
+	padding: 0px 16px;
+	align-items: center;
+	height: 90px;
+}
+/* left part -------------------------------------------------------- */
+.playingBar__left {
+	width: 30%;
+	min-width: 180px;
+}
+.info {
+	display: flex;
+}
+.info__pic {
+	width: 50px;
+	height: 53px;
+	background-color: red;
+}
+.info__song {
+	flex-direction: column;
+	margin: 0 14px;
+	justify-content: center;
+	width: 125px;
+	display: none;
+}
+.info__name {
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.015em;
+	color: var(--white);
+	text-align: left;
+	margin: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.info__artist {
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.015rem;
+	text-align: left;
+}
+.info__liked {
+	display: flex;
+	align-items: center;
+}
+/* center part -------------------------------------------------------- */
+.playingBar__center {
+	width: 40%;
+	max-width: 722px;
+	height: 60px;
+}
+.controls__buttons {
+	display: flex;
+
+	justify-content: center;
+	margin-bottom: 12px;
+}
+.playback {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+}
+.playback__text {
+	font-size: 11px;
+}
+.progress-bar {
+	width: 100%;
+	height: 5px;
+	background-color: var(--dark-gray);
+	position: relative;
+	border-radius: 10px;
+	margin: 0 10px;
+}
+.progress {
+	height: 100%;
+	background-color: var(--white-gray);
+	border-radius: 10px;
+	position: absolute;
+}
+/* right part -------------------------------------------------------- */
+.playingBar__right {
+	width: 30%;
+	min-width: 180px;
+}
+.extra-controls {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.control__btn {
+	width: 32px;
+	height: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--white-gray);
+}
+.control__btn.fas {
+	display: flex;
+}
+.control__btn.far {
+	display: flex;
+}
+.volume__emoji {
+	margin-left: 5px;
+}
+.volume {
+	display: flex;
+	align-items: center;
+	width: 150px;
+	height: 32px;
+	margin-left: 5px;
+}
+.volume-bar {
+	width: 100%;
+	height: 5px;
+}
+/* javascript left part*/
+.info__song.active {
+	display: flex;
+}
+/* mediaquery part ------------------------------------------------------ */
+@media screen and (min-width: 1024px) {
+	/* footer */
+	.info__name,
+	.info__artist {
+		cursor: pointer;
+	}
+	.info__name:hover,
+	.info__artist:hover {
+		text-decoration: underline;
+	}
+	.control__btn:hover {
+		color: var(--white);
+	}
+	.progress:hover {
+		background-color: var(--green);
+	}
+	/*  */
+}
