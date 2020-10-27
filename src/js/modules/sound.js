@@ -1,7 +1,6 @@
 export function sound() {
 	const d = document;
 	const $playBtn = d.getElementById('play-btn');
-	const $nextBtn = d.getElementById('next-btn');
 	// input file
 	const $btnFiles = d.getElementById('add-files');
 	// etiqueta audio
@@ -17,9 +16,7 @@ export function sound() {
 	const urlTracks = [];
 	const audioPositionTracklist = [];
 	let contadorPositionTracklist = 0;
-	let contador = 0;
 	let audioPorciento = 0;
-	let verificarPausa = false;
 	let nextTrackActive = false;
 	const obtenerMusica = () => {
 		// segun la cantidad de archivos seleccionados
@@ -45,86 +42,68 @@ export function sound() {
 		// lo regreso a 0 para que siempre empiece en this number
 		contadorPositionTracklist = 0;
 		// ahora la etiqueta tiene el src y ahora puedo reproducirlo
-		$audioAdded.src = urlTracks[contador].url;
+		$audioAdded.src = urlTracks[contadorPositionTracklist].url;
 	};
+
 	const play = () => {
-		if (verificarPausa === false) {
-			$audioAdded.play();
-			trackPlayingNow.innerText = `escuchando ${urlTracks[contador].archivo.name}`;
-			d.querySelector('.control__btn-start.fa-play').classList.remove(
-				'fa-play'
+		$audioAdded.play();
+		trackPlayingNow.innerText = `escuchando ${urlTracks[contadorPositionTracklist].archivo.name}`;
+		setInterval(() => {
+			let Totalsegundos = parseInt($audioAdded.currentTime, 10);
+			Totalsegundos %= 3600;
+			const minutos = Math.floor(Totalsegundos / 60);
+			let segundos = Totalsegundos % 60;
+			if (segundos < 10) segundos = `0${segundos}`;
+			$playbackProgressText.innerHTML = `${minutos}:${segundos}`;
+			audioPorciento = Math.round(
+				($audioAdded.currentTime * 100) / $audioAdded.duration
 			);
-			d.querySelector('.control__btn-start').classList.add('fa-pause');
-			setInterval(() => {
-				let Totalsegundos = parseInt($audioAdded.currentTime, 10);
-				Totalsegundos %= 3600;
-				const minutos = Math.floor(Totalsegundos / 60);
-				let segundos = Totalsegundos % 60;
-				if (segundos < 10) segundos = `0${segundos}`;
-				$playbackProgressText.innerHTML = `${minutos}:${segundos}`;
-				audioPorciento = Math.round(
+		}, 1000);
+		$playbackDurationText.innerHTML = `${Math.floor(
+			$audioAdded.duration / 60
+		)}:${Math.floor($audioAdded.duration % 60)}`;
+		setInterval(() => {
+			/* const audioPorciento = Math.round(
 					($audioAdded.currentTime * 100) / $audioAdded.duration
-				);
-			}, 1000);
+				); */
+			$progress.style.width = `${parseInt(
+				($audioAdded.currentTime * 100) / $audioAdded.duration,
+				10
+			)}%`;
+		}, 400);
+	};
+	// Automatizar musica siguiente
+	const musicaSiguiente = () => {
+		contadorPositionTracklist += 1;
+		if (contadorPositionTracklist > urlTracks.length - 1) {
+			contadorPositionTracklist = 0;
+		}
+		$audioAdded.src = urlTracks[contadorPositionTracklist].url;
+		play();
+	};
+	setInterval(() => {
+		if (audioPorciento === 100) {
+			musicaSiguiente();
+		}
+		if ($playbackDurationText.innerHTML === 'NaN:NaN') {
 			$playbackDurationText.innerHTML = `${Math.floor(
 				$audioAdded.duration / 60
 			)}:${Math.floor($audioAdded.duration % 60)}`;
-			setInterval(() => {
-				/* const audioPorciento = Math.round(
-					($audioAdded.currentTime * 100) / $audioAdded.duration
-				); */
-				$progress.style.width = `${parseInt(
-					($audioAdded.currentTime * 100) / $audioAdded.duration,
-					10
-				)}%`;
-			}, 400);
-			verificarPausa = true;
-		} else {
-			d.querySelector('.control__btn-start.fa-pause').classList.remove(
-				'fa-pause'
-			);
-			d.querySelector('.control__btn-start').classList.add('fa-play');
-			$audioAdded.pause();
-			verificarPausa = false;
 		}
-	};
-	const musicaSiguiente = () => {
-		console.log('nex btn ');
-		contador += 1;
-		if (contador > urlTracks.length - 1) {
-			contador = 0;
-		}
-		$audioAdded.src = urlTracks[contador].url;
-		play();
-		verificarPausa = false;
-	};
-
-	// Automatizar musica siguiente
+	}, 1000);
 	const finalMusica = () => {
 		if (nextTrackActive === false) {
+			$audioAdded.setAttribute('loop', '');
+			$repeatSongBtn.innerText = 'AutoTrack-on';
 			nextTrackActive = true;
-			$audioAdded.removeAttribute('loop');
-			$repeatSongBtn.innerText = 'AutoTrack-Off';
 		} else {
 			nextTrackActive = false;
-			$audioAdded.setAttribute('loop', '');
-			$repeatSongBtn.innerText = 'AutoTrack-On';
+			$audioAdded.removeAttribute('loop');
+			$repeatSongBtn.innerText = 'AutoTrack-off';
 		}
-
-		setInterval(() => {
-			if (audioPorciento === 100) {
-				console.log('llegooo');
-				$nextBtn.click();
-				verificarPausa = true;
-			}
-		}, 1000);
 	};
-	$playBtn.addEventListener('click', play);
-	$nextBtn.addEventListener('click', musicaSiguiente);
-	$repeatSongBtn.addEventListener('click', finalMusica);
 	$btnFiles.addEventListener('change', obtenerMusica);
-	trackPlayingNow.addEventListener('click', () => console.log(verificarPausa));
-	obtenerMusica();
-	finalMusica();
+	$playBtn.addEventListener('click', play);
+	$repeatSongBtn.addEventListener('click', finalMusica);
 	musicaSiguiente();
 }
