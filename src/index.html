@@ -21,6 +21,7 @@
 		></script>
 	</head>
 	<body>
+		<audio id="audio-added"></audio>
 		<footer class="playingBbar-ctn">
 			<div class="playingBar__left">
 				<div class="info">
@@ -30,13 +31,11 @@
 						<input id="add-files" class="info__add" type="file" multiple />
 						<span class="info__artist">:::</span>
 					</div>
-					<div class="info__liked">
-						<!-- <i class="control__btn- control__btn fas fa-heart"></i> -->
+					<div class="info__liked" title="add to your liked songs">
 						<i class="far fa-heart control__btn-liked control__btn"></i>
 					</div>
 				</div>
 			</div>
-			<audio id="audio-added"></audio>
 			<div class="playingBar__center">
 				<div class="controls__buttons">
 					<div id="prev-btn" class="control-btn-wrapper">
@@ -74,13 +73,15 @@
 					<select class="track__list" id="track-list"></select>
 					<div class="volume">
 						<div class="volume__emoji">
-							<i class="fas fa-volume-up control__btn control__btn-volume"></i>
+							<i
+								class="fas fa-volume-down control__btn control__btn-volume"
+							></i>
 						</div>
 						<input
 							type="range"
 							id="volume-bar"
 							class="volume-bar"
-							value=""
+							value="0.2"
 							min="0"
 							max="1"
 							step="0.10"

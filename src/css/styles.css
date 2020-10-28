@@ -63,6 +63,9 @@ body {
 	display: flex;
 	align-items: center;
 }
+.control__btn-liked.active {
+	color: var(--green);
+}
 /* center part -------------------------------------------------------- */
 .playingBar__center {
 	width: 40%;
@@ -94,6 +97,7 @@ body {
 }
 .playback__text {
 	font-size: 11px;
+	cursor: default;
 }
 .progress-bar {
 	width: 100%;
@@ -109,11 +113,11 @@ body {
 	border-radius: 10px;
 	position: absolute;
 }
+.progress.active {
+	background-color: var(--green);
+}
 .control-btn-repeat.active {
 	color: var(--green);
-}
-.control-btn-repeat.active:hover {
-	color: var(--green-hover);
 }
 /* right part -------------------------------------------------------- */
 .playingBar__right {
@@ -133,6 +137,7 @@ body {
 	align-items: center;
 	color: var(--white-gray);
 }
+/* pongo esta porque normalize es una pija */
 .control__btn.fas {
 	display: flex;
 }
@@ -143,13 +148,17 @@ body {
 	margin-left: 5px;
 }
 .control__btn-trackplaying {
-	/* width: 50px; */
-	/* justify-content: flex-end; */
 	padding: 0 5px;
 }
 .track__list {
 	width: 100px;
 	display: none;
+	background-color: var(--footer);
+	border: none;
+	color: var(--white);
+}
+.tracklist__name {
+	color: var(--white);
 }
 .track__list.active {
 	display: block;
@@ -183,8 +192,7 @@ body {
 	.control__btn:hover {
 		color: var(--white);
 	}
-	.progress:hover {
-		background-color: var(--green);
+	.control__btn.active:hover {
+		color: var(--green-hover);
 	}
-	/*  */
 }

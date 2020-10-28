@@ -22,8 +22,9 @@ export function sound() {
 	let contadorPositionTracklist = 0;
 	let audioPorciento = 0;
 	let nextTrackActive = false;
-
 	const play = () => {
+		$volumeInput.value = 0.2;
+		$audioAdded.volume = $volumeInput.value;
 		$audioAdded.play();
 		$nameSong.classList.add('active');
 		$nameSong.innerText = `${urlTracks[contadorPositionTracklist].archivo.name}`;
@@ -177,11 +178,5 @@ export function sound() {
 	$nextBtn.addEventListener('click', cancionSiguiente);
 	$prevBtn.addEventListener('click', cancionAnterior);
 	d.querySelector('#track-list').addEventListener('change', musicaDeTracklist);
-	d.querySelector('.control__btn-trackplaying').addEventListener(
-		'click',
-		() => {
-			$tracklist.classList.toggle('active');
-		}
-	);
 	musicaSiguiente();
 }
