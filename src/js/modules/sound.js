@@ -53,22 +53,14 @@ export function sound() {
 	};
 	// cuando haga click en una cancion del select(html)
 	const musicaDeTracklist = () => {
-		console.log('musica del traklsisisisisi');
 		for (let iterator = 0; iterator < listaCanciones.length; iterator += 1) {
-			console.log('kujstaa cabnciones');
-			listaCanciones.forEach((el) => {
-				console.log('s');
-				el.addEventListener('click', (e) => {
-					console.log('clickkkk dn item');
-					if (e.target.innerHTML === urlTracks[iterator].archivo.name) {
-						$audioAdded.src = urlTracks[iterator].url;
-						$nameSong.innerText = `${urlTracks[iterator].archivo.name}`;
-						// por esta linea eslint me dice que no cumplo un par de reglas.i dont care
-						contadorPositionTracklist = iterator;
-					}
-					play();
-				});
-			});
+			const a = d.querySelector('#track-list').value;
+			if (a === urlTracks[iterator].archivo.name) {
+				$audioAdded.src = urlTracks[iterator].url;
+				$nameSong.innerText = `${urlTracks[iterator].archivo.name}`;
+				contadorPositionTracklist = iterator;
+			}
+			play();
 		}
 	};
 	const obtenerMusica = () => {
@@ -89,14 +81,12 @@ export function sound() {
 			});
 			// le pongo que canciones selecciono, es += para que no se quede solo con el ultimo item
 			contadorPositionTracklist += 1;
-			$tracklist.classList.add('active');
 			$tracklist.innerHTML += `
-			<option class="tracklist__name" >${urlTracks[iterator].archivo.name}</option>
+			<option value="${urlTracks[iterator].archivo.name}" class="tracklist__name" >${urlTracks[iterator].archivo.name}</option>
 			`;
 		}
 		// cuando tenga agregue audios,ahi voya  poder elegir canciones del select
 		listaCanciones = d.querySelectorAll('.tracklist__name');
-		musicaDeTracklist();
 		// lo regreso a 0 para que siempre empiece en this number
 		contadorPositionTracklist = 0;
 		// ahora la etiqueta tiene el src y ahora puedo reproducirlo
@@ -118,7 +108,6 @@ export function sound() {
 	const controlAudio = (e) => {
 		$audioAdded.volume = e.target.value;
 		if ($audioAdded.volume === 0) {
-			console.log('cerro');
 			d.querySelector('.control__btn-volume').classList.remove('fa-volume-up');
 			d.querySelector('.control__btn-volume').classList.remove(
 				'fa-volume-down'
@@ -133,7 +122,6 @@ export function sound() {
 			d.querySelector('.control__btn-volume').classList.add('fa-volume-down');
 		}
 		if ($audioAdded.volume > 0.5) {
-			console.log('Mayor a 5');
 			d.querySelector('.control__btn-volume').classList.remove(
 				'fa-volume-down'
 			);
@@ -188,5 +176,12 @@ export function sound() {
 	$volumeInput.addEventListener('change', controlAudio);
 	$nextBtn.addEventListener('click', cancionSiguiente);
 	$prevBtn.addEventListener('click', cancionAnterior);
+	d.querySelector('#track-list').addEventListener('change', musicaDeTracklist);
+	d.querySelector('.control__btn-trackplaying').addEventListener(
+		'click',
+		() => {
+			$tracklist.classList.toggle('active');
+		}
+	);
 	musicaSiguiente();
 }

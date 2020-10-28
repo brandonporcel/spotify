@@ -143,8 +143,8 @@ body {
 	margin-left: 5px;
 }
 .control__btn-trackplaying {
-	width: 125px;
-	justify-content: flex-end;
+	/* width: 50px; */
+	/* justify-content: flex-end; */
 	padding: 0 5px;
 }
 .track__list {
