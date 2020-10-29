@@ -1,0 +1,4 @@
+.root__top-bar {
+	background-color: #000;
+	grid-area: header;
+}

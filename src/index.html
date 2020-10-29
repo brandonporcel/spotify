@@ -21,79 +21,106 @@
 		></script>
 	</head>
 	<body>
-		<audio id="audio-added"></audio>
-		<footer class="playingBbar-ctn">
-			<div class="playingBar__left">
-				<div class="info">
-					<div class="info__pic"></div>
-					<div class="info__song">
-						<p id="info-name" class="info__name">:::</p>
-						<input id="add-files" class="info__add" type="file" multiple />
-						<span class="info__artist">:::</span>
-					</div>
-					<div class="info__liked" title="add to your liked songs">
-						<i class="far fa-heart control__btn-liked control__btn"></i>
-					</div>
-				</div>
+		<div class="main">
+			<div class="root__top-bar">
+				<header class="topBar-ctn">
+					<div class="topBar__prev-btn"></div>
+					<div class="user"></div>
+				</header>
 			</div>
-			<div class="playingBar__center">
-				<div class="controls__buttons">
-					<div id="prev-btn" class="control-btn-wrapper">
-						<i class="fas fa-step-backward control__btn-prev control__btn"></i>
-					</div>
-					<div id="next-btn" class="control-btn-wrapper">
-						<i class="fas fa-step-forward control__btn-next control__btn"></i>
-					</div>
-					<div id="play-btn" class="control-btn-wrapper control__btn-start-ctn">
-						<i class="fas fa-play control__btn-start control__btn"></i>
-					</div>
-					<div
-						id="pause-btn"
-						class="control-btn-wrapper control__btn-pause-ctn"
-					>
-						<i class="fas fa-pause control__btn-start control__btn"></i>
-					</div>
-					<div id="btn-auto-track" class="control-btn-wrapper">
-						<i class="fas fa-redo control-btn-repeat control__btn"></i>
-					</div>
-				</div>
-				<div class="playback">
-					<span class="playback__text playback__progress-text">0:00</span>
-					<div class="progress-bar">
-						<span class="progress"></span>
-					</div>
-					<span class="playback__text playback__duration">0:00</span>
-				</div>
+			<div class="root__nav-bar">
+				<nav class="navBar-ctn">
+					<div class="logo"></div>
+					<ul></ul>
+					<div class="navBar__list"></div>
+				</nav>
 			</div>
-			<div class="playingBar__right">
-				<div class="extra-controls">
-					<div class="control__btn-trackplaying control__btn">
-						<i class="fas fa-stream" title="Queue"></i>
-					</div>
-					<select class="track__list" id="track-list"></select>
-					<div class="volume">
-						<div class="volume__emoji">
-							<i
-								class="fas fa-volume-down control__btn control__btn-volume"
-							></i>
+			<div class="root__main-view">
+				<main class="mainView-ctn"></main>
+			</div>
+			<div class="root__now-playing-bar">
+				<audio id="audio-added"></audio>
+				<footer class="playingBbar-ctn">
+					<div class="playingBar__left">
+						<div class="info">
+							<div class="info__pic"></div>
+							<div class="info__song">
+								<p id="info-name" class="info__name">:::</p>
+								<input id="add-files" class="info__add" type="file" multiple />
+								<span class="info__artist">:::</span>
+							</div>
+							<div class="info__liked" title="add to your liked songs">
+								<i class="far fa-heart control__btn-liked control__btn"></i>
+							</div>
 						</div>
-						<input
-							type="range"
-							id="volume-bar"
-							class="volume-bar"
-							value="0.2"
-							min="0"
-							max="1"
-							step="0.10"
-						/>
 					</div>
+					<div class="playingBar__center">
+						<div class="controls__buttons">
+							<div id="prev-btn" class="control-btn-wrapper">
+								<i
+									class="fas fa-step-backward control__btn-prev control__btn"
+								></i>
+							</div>
+							<div id="next-btn" class="control-btn-wrapper">
+								<i
+									class="fas fa-step-forward control__btn-next control__btn"
+								></i>
+							</div>
+							<div
+								id="play-btn"
+								class="control-btn-wrapper control__btn-start-ctn"
+							>
+								<i class="fas fa-play control__btn-start control__btn"></i>
+							</div>
+							<div
+								id="pause-btn"
+								class="control-btn-wrapper control__btn-pause-ctn"
+							>
+								<i class="fas fa-pause control__btn-start control__btn"></i>
+							</div>
+							<div id="btn-auto-track" class="control-btn-wrapper">
+								<i class="fas fa-redo control-btn-repeat control__btn"></i>
+							</div>
+						</div>
+						<div class="playback">
+							<span class="playback__text playback__progress-text">0:00</span>
+							<div class="progress-bar">
+								<span class="progress"></span>
+							</div>
+							<span class="playback__text playback__duration">0:00</span>
+						</div>
+					</div>
+					<div class="playingBar__right">
+						<div class="extra-controls">
+							<div class="control__btn-trackplaying control__btn">
+								<i class="fas fa-stream" title="Queue"></i>
+							</div>
+							<select class="track__list" id="track-list"></select>
+							<div class="volume">
+								<div class="volume__emoji">
+									<i
+										class="fas fa-volume-down control__btn control__btn-volume"
+									></i>
+								</div>
+								<input
+									type="range"
+									id="volume-bar"
+									class="volume-bar"
+									value="0.2"
+									min="0"
+									max="1"
+									step="0.10"
+								/>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<div class="device-ctn">
+					<span class="device__span" id="device-text"
+						>You're listening on <span class="device__browser"></span
+					></span>
 				</div>
 			</div>
-		</footer>
-		<div class="device-ctn">
-			<span class="device__span" id="device-text"
-				>You're listening on <span class="device__browser"></span
-			></span>
 		</div>
 		<script src="js/script.js" type="module"></script>
 	</body>

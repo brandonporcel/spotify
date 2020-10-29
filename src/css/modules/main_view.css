@@ -1,0 +1,4 @@
+.root__main-view {
+	background-color: var(--dark);
+	grid-area: content;
+}
