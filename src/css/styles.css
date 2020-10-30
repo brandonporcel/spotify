@@ -5,14 +5,15 @@
 @import './modules/now_playing_bar.css';
 /* top bar */
 @import './modules/top_bar.css';
-/* nav bar left */
-@import './modules/nav_bar.css';
 /* main content-center */
 @import './modules/main_view.css';
+/* nav bar left */
+@import './modules/nav_bar.css';
 .main {
 	width: 100vw;
 	height: 100vh;
 	background: #000;
+	color: var(--white-gray);
 	font-family: Helvetica, sans-serif;
 	display: grid;
 	grid-template-columns: 230px auto;
