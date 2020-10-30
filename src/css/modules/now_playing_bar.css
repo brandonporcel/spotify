@@ -188,7 +188,7 @@
 .device__span {
 	color: var(--white);
 	padding-right: 5px;
-	font-size: 14px;
+	font-weight: 400;
 }
 .device__browser {
 	font-weight: 600;
