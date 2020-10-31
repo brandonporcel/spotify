@@ -2,3 +2,15 @@
 	background-color: var(--dark);
 	grid-area: content;
 }
+.mainView-ctn {
+	background-color: red;
+	height: 480px;
+	overflow: auto;
+}
+.background {
+	height: 280px;
+	background-image: url(../../assets/img/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 15%;
+}
