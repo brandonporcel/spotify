@@ -4,6 +4,7 @@
 }
 .navBar-ctn {
 	padding-top: 25px;
+	height: calc(100% - 25px);
 }
 .navBar__logo {
 	width: 100%;
