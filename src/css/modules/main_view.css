@@ -28,25 +28,30 @@
 .mainView__content {
 	background: linear-gradient(rgba(255, 255, 255, 0.1), black);
 }
-.popular__wrapper {
-	margin-top: 20px;
+.popularSection {
+	width: 70%;
 	padding: 0 16px;
+	padding: 25px;
 }
 .popularSong__item {
 	display: flex;
-	padding: 0 16px;
 	height: 56px;
 	border-radius: 4px;
 	user-select: none;
+	width: 100%;
+}
+.popularSong_content {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
 }
 .popularSong__info-pic {
 	width: 40px;
 	height: 40px;
-	background-color: red;
+	background-color: var(--red);
 	margin-right: 10px;
 }
 .popularSong__info {
-	background-color: blue;
 	display: flex;
 	align-items: center;
 }
@@ -61,9 +66,33 @@
 	align-items: center;
 	padding-right: 10px;
 }
-
+.popularSong__moreInfo {
+	display: flex;
+	align-items: center;
+}
+.section-popular-fans {
+	display: flex;
+}
+.fans__ctn {
+	width: 30%;
+	padding: 25px;
+}
+.fansLike__item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+.fansLike-pic {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--red);
+	margin-right: 10px;
+}
 @media screen and (min-width: 1024px) {
-	.popularSong__item:hover {
+	.popularSong__item:hover,
+	.fansLike__item:hover {
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 }
