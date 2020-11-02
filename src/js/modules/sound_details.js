@@ -2,7 +2,7 @@ export function soundDetails() {
 	const d = document;
 	const $tracklist = d.getElementById('track-list');
 	const $progress = d.querySelector('.progress');
-	const $likedIcon = d.querySelector('.control__btn-liked');
+	const $likedIcons = d.querySelectorAll('.control__btn-liked');
 	const $device = d.querySelector('.device__browser');
 	let likedIconTester = false;
 	d.querySelector('.control__btn-trackplaying').addEventListener(
@@ -17,17 +17,21 @@ export function soundDetails() {
 	d.querySelector('.playback').addEventListener('mouseout', () => {
 		$progress.classList.remove('active');
 	});
-	$likedIcon.addEventListener('click', () => {
-		if (likedIconTester === false) {
-			$likedIcon.classList.remove('far', 'fa-heart');
-			$likedIcon.classList.add('fas', 'fa-heart', 'active');
-			likedIconTester = true;
-		} else {
-			$likedIcon.classList.remove('fas', 'fa-heart', 'active');
-			$likedIcon.classList.add('far', 'fa-heart');
-			likedIconTester = false;
-		}
+
+	$likedIcons.forEach((el) => {
+		el.addEventListener('click', () => {
+			if (likedIconTester === false) {
+				el.classList.remove('far', 'fa-heart');
+				el.classList.add('fas', 'fa-heart', 'active');
+				likedIconTester = true;
+			} else {
+				el.classList.remove('fas', 'fa-heart', 'active');
+				el.classList.add('far', 'fa-heart');
+				likedIconTester = false;
+			}
+		});
 	});
+	console.log($likedIcons);
 	const isBrowser = {
 		chromeee: () => navigator.userAgent.match(/chrome/i),
 		safarai: () => navigator.userAgent.match(/safarai/i),
