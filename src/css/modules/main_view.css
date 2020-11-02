@@ -3,7 +3,6 @@
 	grid-area: content;
 }
 .mainView-ctn {
-	background-color: red;
 	height: 450px;
 	overflow: auto;
 }
@@ -13,4 +12,19 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50% 15%;
+	padding: 0 32px 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	opacity: 0.8;
+}
+.background__nav {
+	background-color: salmon;
+	display: flex;
+	justify-content: space-around;
+	position: sticky;
+	top: 0;
+}
+.mainView__content {
+	background: linear-gradient(rgba(255, 255, 255, 0.1), black);
 }

@@ -22,10 +22,10 @@ export function mainView() {
 	if (isBrowser.chromeee()) {
 		document.querySelector('.mainView-ctn').style.height = '480px';
 	}
-	$ctn.addEventListener('scroll', () => {
+	$ctn.addEventListener('scroll', (e) => {
 		const topDistance = $ctn.scrollTop;
-		if (topDistance > 100) {
-			console.log('mayor a 100');
+		if (topDistance > 280) {
+			console.log('mayor a 280');
 		} else {
 			console.log('Menor');
 		}
