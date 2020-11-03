@@ -5,6 +5,8 @@
 .mainView-ctn {
 	height: 450px;
 	overflow: auto;
+
+	background: linear-gradient(rgba(255, 255, 255, 0.1), black);
 }
 .background {
 	height: 280px;
@@ -16,7 +18,23 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	opacity: 0.8;
+	/* opacity: 0.8; */
+}
+.background__verified {
+	display: flex;
+	align-items: center;
+	color: var(--white);
+	font-weight: 400;
+}
+.background__verified-svg {
+	margin-right: 5px;
+}
+.background__artist-name {
+	font-size: 96px;
+	margin: 0;
+}
+.background__btn {
+	background-color: red;
 }
 .background__nav {
 	background-color: salmon;
@@ -25,9 +43,7 @@
 	position: sticky;
 	top: 0;
 }
-.mainView__content {
-	background: linear-gradient(rgba(255, 255, 255, 0.1), black);
-}
+
 .popularSection {
 	width: 70%;
 	padding: 0 16px;
@@ -90,9 +106,37 @@
 	background-color: var(--red);
 	margin-right: 10px;
 }
+.albumes__ctn {
+	padding: 25px;
+}
+.albumesCards__ctn {
+	display: flex;
+	flex-wrap: wrap;
+}
+.album-card {
+	margin-right: 0 24px;
+	margin: 15px;
+	cursor: default;
+}
+.album__pic {
+	height: 180px;
+	width: 180px;
+	background-color: var(--red);
+}
+.album__title {
+	color: var(--white);
+}
+.album__year {
+	font-weight: 400;
+}
 @media screen and (min-width: 1024px) {
 	.popularSong__item:hover,
 	.fansLike__item:hover {
 		background-color: rgba(255, 255, 255, 0.1);
+	}
+	.album__title:hover,
+	.album__year:hover {
+		text-decoration: underline;
+		text-decoration-color: var(--white);
 	}
 }
