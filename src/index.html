@@ -24,8 +24,39 @@
 		<div class="main">
 			<div class="root__top-bar">
 				<header class="topBar-ctn">
-					<div class="topBar__prev-btn"></div>
-					<div class="topBar__user"></div>
+					<div class="topBar__btn-prev">
+						<svg
+							role="img"
+							focusable="false"
+							height="24"
+							width="24"
+							viewBox="0 0 24 24"
+							class="Svg-sc-1usfroi-0 jUuLJy _6fe5d5efc9b4a07d5c424071ac7cdacb-scss"
+						>
+							<polyline
+								points="16 4 7 12 16 20"
+								fill="none"
+								stroke="#181818"
+							></polyline>
+						</svg>
+					</div>
+					<div class="topBar__btn-next">
+						<svg
+							role="img"
+							focusable="false"
+							height="24"
+							width="24"
+							viewBox="0 0 24 24"
+							class="Svg-sc-1usfroi-0 jUuLJy _6fe5d5efc9b4a07d5c424071ac7cdacb-scss"
+						>
+							<polyline
+								points="8 4 17 12 8 20"
+								fill="none"
+								stroke="#181818"
+							></polyline>
+						</svg>
+						<div class="topBar__user"></div>
+					</div>
 				</header>
 			</div>
 			<div class="root__nav-bar">
@@ -178,21 +209,31 @@
 						<h1 class="background__artist-name">Los Piojos</h1>
 						<div class="background__btn-ctn">
 							<div>
-								<button class="background__btn btn-play">Play</button>
-								<button class="background__btn btn-followng">Following</button>
+								<button class="background__btn background__btn-play">
+									Play
+								</button>
+								<button class="background__btn background__btn-following">
+									Following
+								</button>
 							</div>
 							<div class="background__info">
-								<p>Monthly LisTENERS</p>
-								<p>1.145.323 oyentes mensuales</p>
+								<p class="background__info-listeners-text">Monthly Listeners</p>
+								<p class="background__info-number-listeners">1.145.323</p>
 							</div>
 						</div>
 					</div>
 					<div class="background__nav">
 						<div class="background__nav-item">
-							<a href="#">Overview</a>
+							<a
+								class="background__nav-a background__a-overview active"
+								href="#"
+								>Overview</a
+							>
 						</div>
 						<div class="background__nav-item">
-							<a href="/src/pages/about.html">About</a>
+							<a class="background__nav-a background__a-about" href="#"
+								>About</a
+							>
 						</div>
 					</div>
 					<section class="section-popular-fans">
@@ -312,7 +353,7 @@
 							</div>
 						</article>
 					</section>
-					<hr />
+					<hr class="mainView__hr" />
 					<section class="albumes__ctn">
 						<h2>Albumes</h2>
 						<div class="albumesCards__ctn">
@@ -360,6 +401,66 @@
 								<a href="#">see discography...</a>
 							</div>
 						</div>
+					</section>
+					<div class="allScreen hide">
+						<div class="allScreen__btn allScreen__close-btn">X</div>
+						<div class="allScreen__btn allScreen__prev-btn"><</div>
+						<div class="allScreen__btn allScreen__next-btn">></div>
+						<div class="allScreen__img-item active">
+							<img
+								class="allScreen__img allScreen__img-one"
+								src="/src/assets/img/slider_1.jpg"
+								alt=""
+							/>
+						</div>
+						<div class="allScreen__img-item hide">
+							<img
+								class="allScreen__img allScreen__img-two"
+								src="/src/assets/img/slider_2.jpg"
+								alt=""
+							/>
+						</div>
+						<div class="allScreen__img-item hide">
+							<img
+								class="allScreen__img allScreen__img-three"
+								src="/src/assets/img/slider_3.jpg"
+								alt=""
+							/>
+						</div>
+						<div class="allScreen__img-item hide">
+							<img
+								class="allScreen__img allScreen__img-four"
+								src="/src/assets/img/slider_4.jpg"
+								alt=""
+							/>
+						</div>
+					</div>
+					<section class="mainView__about hide">
+						<h2>Image Gallery</h2>
+						<article class="about__pics-ctn">
+							<div class="about__thumbnail about__thumbnail-one">
+								<img
+									class="about__thumbnail-img about__thumbnail-img-one"
+									src="/src/assets/img/slider_1.jpg"
+									alt=""
+								/>
+							</div>
+							<div class="about__thumbnail about__thumbnail-two">
+								<img
+									class="about__thumbnail-img about__thumbnail-img-two"
+									src="/src/assets/img/slider_2.jpg"
+									alt=""
+								/>
+							</div>
+							<div class="about__thumbnail about__thumbnail-three">
+								<img
+									class="about__thumbnail-img about__thumbnail-three-img"
+									src="/src/assets/img/slider_3.jpg"
+									alt=""
+								/>
+								<span class="about__thumbnail-three-text">+4 More</span>
+							</div>
+						</article>
 					</section>
 				</main>
 			</div>

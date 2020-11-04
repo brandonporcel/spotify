@@ -18,6 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	color: var(--white);
 	/* opacity: 0.8; */
 }
 .background__verified {
@@ -32,18 +33,74 @@
 .background__artist-name {
 	font-size: 96px;
 	margin: 0;
+	line-height: 96px;
+	font-weight: bold;
+	letter-spacing: -8px;
+}
+.background__info-listeners-text.active {
+	color: var(--white);
+}
+.background__info {
+	color: var(--white-gray);
+	background-color: rgba(0, 0, 0, 0.5);
+	cursor: default;
+}
+.background__info-number-listeners {
+	text-align: right;
+}
+.background__btn-ctn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .background__btn {
-	background-color: red;
+	outline: none;
+	border-radius: 15px;
+	padding: 7px;
+	border: none;
+	cursor: pointer;
+	transition: font-weight 0.3s;
+}
+.background__btn-play {
+	width: 150px;
+	background-color: var(--green);
+	color: var(--white);
+}
+.background__btn-following {
+	width: 175px;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: var(--green);
 }
 .background__nav {
-	background-color: salmon;
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	position: sticky;
 	top: 0;
+	width: 100%;
+	background-color: var(--dark);
+	height: 50px;
+	z-index: 111;
 }
-
+.background__nav-a {
+	color: var(--white-gray);
+	text-decoration: none;
+	width: 100px;
+	display: block;
+	text-align: center;
+	position: relative;
+}
+.background__nav-a.active::after {
+	content: '';
+	width: 30px;
+	height: 2px;
+	background-color: var(--green);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
 .popularSection {
 	width: 70%;
 	padding: 0 16px;
@@ -119,8 +176,8 @@
 	cursor: default;
 }
 .album__pic {
-	height: 180px;
-	width: 180px;
+	height: 170px;
+	width: 170px;
 	background-color: var(--red);
 }
 .album__title {
@@ -128,6 +185,116 @@
 }
 .album__year {
 	font-weight: 400;
+}
+.hide {
+	display: none;
+}
+/* about --------------------------------------------------------------------------- */
+.mainView__about {
+	padding: 25px;
+
+	height: 100%;
+}
+.about__pics-ctn {
+	background-color: blue;
+	width: 50%;
+	height: 300px;
+
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+.about__thumbnail {
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+.about__thumbnail-img {
+	width: 100%;
+}
+.about__thumbnail-one {
+	width: 70%;
+	height: 100%;
+	background-color: teal;
+}
+.about__thumbnail-two {
+	width: 30%;
+	height: 50%;
+	background-color: thistle;
+}
+.about__thumbnail-three {
+	height: 50%;
+	width: 30%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: tomato;
+}
+.about__thumbnail-three-img {
+	position: relative;
+	opacity: 0.3;
+}
+.about__thumbnail-three-text {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	cursor: pointer;
+}
+.allScreen {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background-color: rgba(139, 69, 19, 0.774);
+	z-index: 333;
+}
+.allScreen__btn {
+	position: absolute;
+	background: var(--dark);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	z-index: 255;
+}
+.allScreen__next-btn,
+.allScreen__prev-btn {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 1px solid;
+}
+.allScreen__close-btn {
+	right: 100px;
+	top: 60px;
+	background-color: transparent;
+}
+.allScreen__prev-btn {
+	top: 300px;
+	left: 100px;
+}
+.allScreen__next-btn {
+	right: 100px;
+	top: 300px;
+}
+.allScreen__img-item {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+}
+.allScreen__img-item.active {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	z-index: 222;
 }
 @media screen and (min-width: 1024px) {
 	.popularSong__item:hover,
@@ -138,5 +305,14 @@
 	.album__year:hover {
 		text-decoration: underline;
 		text-decoration-color: var(--white);
+	}
+	.background__btn:hover {
+		font-weight: bold;
+	}
+	.background__nav-a:hover {
+		color: var(--white);
+	}
+	.background__info-listeners-text:hover {
+		cursor: pointer;
 	}
 }

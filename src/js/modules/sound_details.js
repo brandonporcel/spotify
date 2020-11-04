@@ -31,7 +31,7 @@ export function soundDetails() {
 			}
 		});
 	});
-	console.log($likedIcons);
+
 	const isBrowser = {
 		chromeee: () => navigator.userAgent.match(/chrome/i),
 		safarai: () => navigator.userAgent.match(/safarai/i),

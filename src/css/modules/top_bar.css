@@ -1,4 +1,4 @@
 .root__top-bar {
-	background-color: #000;
+	background-color: var(--dark);
 	grid-area: header;
 }
