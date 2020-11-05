@@ -141,7 +141,7 @@
 }
 .popularSong__moreInfo {
 	display: flex;
-	align-items: center;
+	align-items: center;;
 }
 .section-popular-fans {
 	display: flex;
@@ -223,7 +223,7 @@
 	text-align: center;
 }
 .about__pics-ctn {
-	background-color: blue;
+	background-color: var(--dark);
 	width: 50%;
 	height: 300px;
 	margin: 0 auto;
@@ -239,12 +239,14 @@
 .about__bio-title {
 	color: var(--white);
 }
+.about__bio-text {
+	margin-bottom: 50px;
+}
 .about__bio-text::selection {
 	background-color: var(--dark);
 	color: var(--white);
 }
 .about__thumbnail {
-	background-color: rgba(0, 0, 0, 0.8);
 	display: flex;
 	align-items: center;
 	cursor: pointer;
@@ -252,15 +254,16 @@
 .about__thumbnail-img {
 	width: 100%;
 }
+.about__thumbnail-img-three{
+	opacity: .3;
+}
 .about__thumbnail-one {
 	width: 70%;
 	height: 100%;
-	background-color: teal;
 }
 .about__thumbnail-two {
 	width: 30%;
 	height: 50%;
-	background-color: thistle;
 }
 .about__thumbnail-three {
 	height: 50%;
@@ -268,7 +271,6 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	background-color: tomato;
 }
 .about__thumbnail-three-img {
 	position: relative;
@@ -276,9 +278,10 @@
 }
 .about__thumbnail-three-text {
 	position: absolute;
-	top: 50px;
-	left: 50px;
+	top: 70px;
+	left: 30px;
 	cursor: pointer;
+	color: var(--white);
 }
 .allScreen {
 	position: absolute;

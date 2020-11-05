@@ -1,0 +1,1 @@
+export function leftNavBar(){(()=>navigator.userAgent.match(/chrome/i))()&&(document.querySelector(".list__playlist").style.height="143px")}
