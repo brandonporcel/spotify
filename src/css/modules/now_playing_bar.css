@@ -184,6 +184,18 @@
 	justify-content: flex-end;
 	padding: 2px;
 	user-select: none;
+	position: relative;
+}
+.device-ctn::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -20px;
+	right: 650px;
+	border-top: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid var(--green);
 }
 .device__span {
 	color: var(--white);

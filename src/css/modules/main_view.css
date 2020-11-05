@@ -179,11 +179,36 @@
 	height: 170px;
 	width: 170px;
 	background-color: var(--red);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.album__pic-btn {
+	height: 42px;
+	width: 42px;
+	align-items: center;
+	justify-content: center;
+	cursor: default;
+	display: none;
+}
+.album__pic.active {
+	background-color: rgba(255, 0, 0, 0.5);
+}
+.album__pic.active .album__pic-btn {
+	display: flex;
+}
+.album__pic-play {
+	background-color: transparent;
+	border: 1px solid;
+	border-radius: 50%;
+}
+.album__pic-btn-inner {
+	font-size: 24px;
 }
 .album__title {
 	color: var(--white);
 }
-.album__year {
+.album__artist {
 	font-weight: 400;
 }
 .hide {
@@ -194,14 +219,29 @@
 	padding: 25px;
 	height: 100%;
 }
+.mainView__about-title {
+	text-align: center;
+}
 .about__pics-ctn {
 	background-color: blue;
 	width: 50%;
 	height: 300px;
+	margin: 0 auto;
 
 	display: flex;
 	flex-wrap: wrap;
 	position: relative;
+}
+.about__bio-ctn {
+	width: 75%;
+	margin: 0 auto;
+}
+.about__bio-title {
+	color: var(--white);
+}
+.about__bio-text::selection {
+	background-color: var(--dark);
+	color: var(--white);
 }
 .about__thumbnail {
 	background-color: rgba(0, 0, 0, 0.8);
@@ -246,7 +286,7 @@
 	right: 0;
 	bottom: 0;
 	top: 0;
-	background-color: rgba(139, 69, 19, 0.774);
+	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 333;
 }
 .allScreen__btn {
@@ -267,6 +307,7 @@
 	border-radius: 50%;
 	background-color: transparent;
 	border: 1px solid;
+	color: var(--white-gray);
 }
 .allScreen__close-btn {
 	right: 100px;
@@ -301,17 +342,21 @@
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 	.album__title:hover,
-	.album__year:hover {
+	.album__artist:hover {
 		text-decoration: underline;
 		text-decoration-color: var(--white);
+	}
+	.album__pic:hover {
+		cursor: pointer;
 	}
 	.background__btn:hover {
 		font-weight: bold;
 	}
-	.background__nav-a:hover {
+	.background__nav-a:hover,
+	.album__pic-btn:hover {
 		color: var(--white);
 	}
-	.background__info-listeners-text:hover {
+	.allScreen .allScreen__btn .background__info-listeners-text:hover {
 		cursor: pointer;
 	}
 }

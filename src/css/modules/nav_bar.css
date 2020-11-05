@@ -51,6 +51,9 @@
 	display: flex;
 	align-items: center;
 	padding: 5px 24px;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.2s linear;
 }
 .list__item-icon {
 	width: 32px;
@@ -60,7 +63,7 @@
 	background-color: #fff;
 }
 .list__item-liked-icon-ctn {
-	background-color: blue;
+	background-color: var(--red);
 	width: 32px;
 	height: 32px;
 	display: flex;
@@ -71,28 +74,40 @@
 	width: initial;
 	height: initial;
 }
+.hrTag {
+	color: red;
+	height: 1px;
+	background-color: #282828;
+	margin: 8px 24px 8px 24px;
+	border: none;
+}
 .list__playlist {
 	height: 110px;
 }
 .playlist__ul {
 	margin: 0;
 	height: inherit;
+	list-style: none;
 	overflow: auto;
+}
+.playlist__item {
+	padding-left: 16px;
+	padding-right: 24px;
+	height: 32px;
+	cursor: default;
 }
 /*  */
 .navBar__install {
-	background-color: thistle;
 	height: 40px;
 	padding: 0 8px;
 }
 .install__icon {
-	color: red;
+	background-color: var(--red);
 }
 .install__a {
 	display: block;
 	text-decoration: none;
 	color: inherit;
-	background-color: khaki;
 	height: 100%;
 	width: 180px;
 	padding: 0 20px 0 16px;
@@ -102,6 +117,12 @@
 @media screen and (min-width: 1024px) {
 	.navBar__a:hover {
 		background-color: var(--dark-modal);
+		color: var(--white);
+	}
+	.list__item:hover {
+		opacity: 1;
+	}
+	.playlist__item:hover {
 		color: var(--white);
 	}
 }

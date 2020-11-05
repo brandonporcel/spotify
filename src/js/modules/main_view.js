@@ -1,6 +1,5 @@
 const d = document;
 export function mainView() {
-	const $ctn = d.querySelector('.mainView-ctn');
 	const isBrowser = {
 		chromeee: () => navigator.userAgent.match(/chrome/i),
 		safarai: () => navigator.userAgent.match(/safarai/i),
@@ -19,6 +18,8 @@ export function mainView() {
 			);
 		},
 	};
+	const $albumPics = d.querySelectorAll('.album__pic');
+	const $albumBtns = d.querySelectorAll('.album__pic-btn');
 	const $aboutBtn = d.querySelector('.background__a-about');
 	const $overviewBtn = d.querySelector('.background__a-overview');
 	const $popularSection = d.querySelector('.section-popular-fans');
@@ -31,39 +32,59 @@ export function mainView() {
 	const $nextBtn = d.querySelector('.allScreen__next-btn');
 	const $prevBtn = d.querySelector('.allScreen__prev-btn');
 	const $sliderItems = d.querySelectorAll('.allScreen__img-item');
-	const $firstThumbnail = d.querySelector('.about__thumbnail-img-one');
-	const $secondThumbnail = d.querySelector('.about__thumbnail-img-two');
-	const $thirdThumbnail = d.querySelector('.about__thumbnail-img-three');
+	// contador para el slider
+	let contador = 0;
 	if (isBrowser.chromeee()) {
 		document.querySelector('.mainView-ctn').style.height = '480px';
 	}
-	$ctn.addEventListener('scroll', () => {
-		const topDistance = $ctn.scrollTop;
-		if (topDistance > 280) {
-			// console.log('mayor a 280');
-		} else {
-			// console.log('Menor');
-		}
+	// cuando toque cualquier miniatura, se va a permitir mostrar el fondo/slider
+	$thumbnailImg.forEach((el) => {
+		el.addEventListener('click', () => {
+			$backgroundAllScreen.classList.remove('hide');
+		});
 	});
-	let contador = 0;
+	$albumPics.forEach((item) => {
+		item.addEventListener('mouseover', () => {
+			item.classList.add('active');
+			// $albumBtns.forEach((btn) => {
+			// item.classList.add('hola');
+			// btn.classList.remove('hide');
+			// });
+		});
+		item.addEventListener('mouseleave', () => {
+			item.classList.remove('active');
+			// $albumBtns.forEach((btn) => {
+			// btn.classList.add('hide');
+			// });
+		});
+	});
+
 	d.addEventListener('click', (e) => {
+		// click en la seccion about
 		if (e.target === $aboutBtn) {
 			$popularSection.classList.add('hide');
 			$fansSection.classList.add('hide');
 			$hrTag.classList.add('hide');
+
 			$overviewBtn.classList.remove('active');
 			$aboutBtn.classList.add('active');
 			$aboutSection.classList.remove('hide');
 		}
+		// vuelta a la seccion overview
 		if (e.target === $overviewBtn) {
 			$popularSection.classList.remove('hide');
 			$fansSection.classList.remove('hide');
 			$hrTag.classList.remove('hide');
+
 			$overviewBtn.classList.add('active');
 			$aboutBtn.classList.remove('active');
 			$aboutSection.classList.add('hide');
 		}
-		if (e.target === $firstThumbnail) {
+		// click en la primer miniatura
+		if (
+			e.target.matches('.about__thumbnail-one') ||
+			e.target.matches('.about__thumbnail-one *')
+		) {
 			d.querySelector('.allScreen__img-item-three').classList.remove('active');
 			d.querySelector('.allScreen__img-item-three').classList.add('hide');
 			d.querySelector('.allScreen__img-item-two').classList.remove('active');
@@ -73,7 +94,11 @@ export function mainView() {
 			d.querySelector('.allScreen__img-item-one').classList.add('active');
 			contador = 0;
 		}
-		if (e.target === $secondThumbnail) {
+		// segunda
+		if (
+			e.target.matches('.about__thumbnail-two') ||
+			e.target.matches('.about__thumbnail-two *')
+		) {
 			d.querySelector('.allScreen__img-item-three').classList.remove('active');
 			d.querySelector('.allScreen__img-item-three').classList.add('hide');
 			d.querySelector('.allScreen__img-item-one').classList.remove('active');
@@ -83,8 +108,11 @@ export function mainView() {
 			d.querySelector('.allScreen__img-item-two').classList.add('active');
 			contador = 1;
 		}
-		console.log(e.target);
-		if (e.target === $thirdThumbnail) {
+		// y va el tercero
+		if (
+			e.target.matches('.about__thumbnail-three') ||
+			e.target.matches('.about__thumbnail-three *')
+		) {
 			d.querySelector('.allScreen__img-item-one').classList.remove('active');
 			d.querySelector('.allScreen__img-item-one').classList.add('hide');
 			d.querySelector('.allScreen__img-item-two').classList.remove('active');
@@ -94,20 +122,11 @@ export function mainView() {
 			d.querySelector('.allScreen__img-item-three').classList.add('active');
 			contador = 2;
 		}
-		$thumbnailImg.forEach((el) => {
-			el.addEventListener('click', () => {
-				$backgroundAllScreen.classList.remove('hide');
-				$sliderItems.forEach(() => {
-					// ele.classList.add('hasldasldaskld');
-				});
-			});
-		});
-
+		// cerrar el slider
 		if (e.target === $closeAllScreenBtn) {
 			$backgroundAllScreen.classList.add('hide');
 			d.querySelectorAll('.allScreen__img-item.active').forEach((element) => {
 				element.classList.remove('active');
-				console.log(element);
 			});
 		}
 		if (e.target === $nextBtn) {
@@ -124,12 +143,11 @@ export function mainView() {
 		}
 		if (e.target === $prevBtn) {
 			contador -= 1;
+			$sliderItems[contador + 1].classList.remove('active');
+			$sliderItems[contador + 1].classList.add('hide');
 			if (contador < 0) {
 				contador = $sliderItems.length - 1;
 			}
-			$sliderItems[contador + 1].classList.remove('active');
-			$sliderItems[contador + 1].classList.add('hide');
-
 			$sliderItems[contador].classList.add('active');
 			$sliderItems[contador].classList.remove('hide');
 		}
