@@ -31,10 +31,13 @@ export function mainView() {
 	const $nextBtn = d.querySelector('.allScreen__next-btn');
 	const $prevBtn = d.querySelector('.allScreen__prev-btn');
 	const $sliderItems = d.querySelectorAll('.allScreen__img-item');
+	const $firstThumbnail = d.querySelector('.about__thumbnail-img-one');
+	const $secondThumbnail = d.querySelector('.about__thumbnail-img-two');
+	const $thirdThumbnail = d.querySelector('.about__thumbnail-img-three');
 	if (isBrowser.chromeee()) {
 		document.querySelector('.mainView-ctn').style.height = '480px';
 	}
-	$ctn.addEventListener('scroll', (e) => {
+	$ctn.addEventListener('scroll', () => {
 		const topDistance = $ctn.scrollTop;
 		if (topDistance > 280) {
 			// console.log('mayor a 280');
@@ -43,9 +46,6 @@ export function mainView() {
 		}
 	});
 	let contador = 0;
-	const carousel = (e) => {
-		contador += 1;
-	};
 	d.addEventListener('click', (e) => {
 		if (e.target === $aboutBtn) {
 			$popularSection.classList.add('hide');
@@ -63,23 +63,72 @@ export function mainView() {
 			$aboutBtn.classList.remove('active');
 			$aboutSection.classList.add('hide');
 		}
+		if (e.target === $firstThumbnail) {
+			d.querySelector('.allScreen__img-item-three').classList.remove('active');
+			d.querySelector('.allScreen__img-item-three').classList.add('hide');
+			d.querySelector('.allScreen__img-item-two').classList.remove('active');
+			d.querySelector('.allScreen__img-item-two').classList.add('hide');
+
+			d.querySelector('.allScreen__img-item-one').classList.remove('hide');
+			d.querySelector('.allScreen__img-item-one').classList.add('active');
+		}
+		if (e.target === $secondThumbnail) {
+			d.querySelector('.allScreen__img-item-three').classList.remove('active');
+			d.querySelector('.allScreen__img-item-three').classList.add('hide');
+			d.querySelector('.allScreen__img-item-one').classList.remove('active');
+			d.querySelector('.allScreen__img-item-one').classList.add('hide');
+
+			d.querySelector('.allScreen__img-item-two').classList.remove('hide');
+			d.querySelector('.allScreen__img-item-two').classList.add('active');
+		}
+		console.log(e.target);
+		if (e.target === $thirdThumbnail) {
+			d.querySelector('.allScreen__img-item-one').classList.remove('active');
+			d.querySelector('.allScreen__img-item-one').classList.add('hide');
+			d.querySelector('.allScreen__img-item-two').classList.remove('active');
+			d.querySelector('.allScreen__img-item-two').classList.add('hide');
+
+			d.querySelector('.allScreen__img-item-three').classList.remove('hide');
+			d.querySelector('.allScreen__img-item-three').classList.add('active');
+		}
 		$thumbnailImg.forEach((el) => {
-			el.addEventListener('click', (e) => {
-				// $backgroundAllScreen.classList.remove('hide');
-				$sliderItems.forEach((ele) => {
-					ele.classList.add('hasldasldaskld');
+			el.addEventListener('click', () => {
+				$backgroundAllScreen.classList.remove('hide');
+				$sliderItems.forEach(() => {
+					// ele.classList.add('hasldasldaskld');
 				});
 			});
-			console.log(e.target);
 		});
+
 		if (e.target === $closeAllScreenBtn) {
 			$backgroundAllScreen.classList.add('hide');
+			d.querySelectorAll('.allScreen__img-item.active').forEach((element) => {
+				element.classList.remove('active');
+				console.log(element);
+			});
 		}
 		if (e.target === $nextBtn) {
-			carousel(e);
+			contador += 1;
+			$sliderItems[contador - 1].classList.remove('active');
+			$sliderItems[contador - 1].classList.add('hide');
+			// pregutno si estoy en el ultimo item(6)  el length es de 7,por eso resto
+			// tambien funcaria de la sig. forma
+			if (contador > $sliderItems.length - 1) {
+				contador = 0;
+			}
+			$sliderItems[contador].classList.add('active');
+			$sliderItems[contador].classList.remove('hide');
 		}
 		if (e.target === $prevBtn) {
-			carousel(e);
+			contador -= 1;
+			if (contador < 0) {
+				contador = $sliderItems.length - 1;
+			}
+			$sliderItems[contador + 1].classList.remove('active');
+			$sliderItems[contador + 1].classList.add('hide');
+
+			$sliderItems[contador].classList.add('active');
+			$sliderItems[contador].classList.remove('hide');
 		}
 	});
 }
