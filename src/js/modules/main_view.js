@@ -71,6 +71,7 @@ export function mainView() {
 
 			d.querySelector('.allScreen__img-item-one').classList.remove('hide');
 			d.querySelector('.allScreen__img-item-one').classList.add('active');
+			contador = 0;
 		}
 		if (e.target === $secondThumbnail) {
 			d.querySelector('.allScreen__img-item-three').classList.remove('active');
@@ -80,6 +81,7 @@ export function mainView() {
 
 			d.querySelector('.allScreen__img-item-two').classList.remove('hide');
 			d.querySelector('.allScreen__img-item-two').classList.add('active');
+			contador = 1;
 		}
 		console.log(e.target);
 		if (e.target === $thirdThumbnail) {
@@ -90,6 +92,7 @@ export function mainView() {
 
 			d.querySelector('.allScreen__img-item-three').classList.remove('hide');
 			d.querySelector('.allScreen__img-item-three').classList.add('active');
+			contador = 2;
 		}
 		$thumbnailImg.forEach((el) => {
 			el.addEventListener('click', () => {
